@@ -64,7 +64,7 @@ const galleryItems = [
   },
 ];
 
-console.log("hi")
+
 const galleryContainer = document.querySelector('.js-gallery');
 // console.log(galleryContainer);
 // console.dir(galleryContainer);
@@ -73,7 +73,6 @@ console.log(cardsMarkup);
 galleryContainer.insertAdjacentHTML('afterbegin', cardsMarkup)
 
 function createCards(galleryItems) {
-  // console.log();
 
   return galleryItems
  
