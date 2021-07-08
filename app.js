@@ -66,7 +66,48 @@ const galleryItems = [
 
 console.log("hi")
 const galleryContainer = document.querySelector('.js-gallery');
-console.log(galleryContainer);
-console.dir(galleryContainer);
+// console.log(galleryContainer);
+// console.dir(galleryContainer);
+const cardsMarkup = createCards(galleryItems);
+console.log(cardsMarkup);
+galleryContainer.insertAdjacentHTML('afterbegin', cardsMarkup)
+
+function createCards(galleryItems) {
+  // console.log();
+
+  return galleryItems
+ 
+    .map(item => {
+      return `<li class="gallery__item">
+    <a class="gallery__link" href="${item.original}">
+    </a>
+    <img
+      class="gallery__image"
+      src="${item.preview}"
+      data-source="${item.original}"
+      alt="${item.description}"
+    />
+    </li>`;
+    }).join('');
+}
+
+{/* <li class="gallery__item">
+  <a
+    class="gallery__link"
+    href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
+  >
+    <img
+      class="gallery__image"
+      src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
+      data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
+      alt="Tulips"
+    />
+  </a>
+</li> */}
+
+
+
+
+
 
 
