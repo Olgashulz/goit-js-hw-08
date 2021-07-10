@@ -130,32 +130,100 @@ function slidePictures() {
   }
 
   console.log("лево")
-  return slidePicturesToLeft(altOnCurrentPicture)
+  return slidePicturesToLeft()
 }
 
+// const findImageIndex = () => {
+//   const src = document.querySelector('.lightbox__image').src;
+  
+//   return images.findIndex(image => image.original === src);
+// };
 
-function slidePicturesToRight() {
-  let newArr = galleryItems.map(item => item)
-  let currentUrl = event.target.href;
-  //let currentUrl = event.srcElement.href;
-  console.log(event)
-  console.log(event.srcElement.href);
-  console.log(currentUrl);
+// const showNext = () => {
+//   let imageIndex = findImageIndex();
+//   let nextImageIndex = imageIndex + 1;
+//   nextImageIndex >= maxLength ? (imageIndex = 0) : imageIndex++;
+//   changeImg(imageIndex);
+// };
+// const changeImg = imageIndex => {
+//   const elem = images.find(function (value, index) {
+//     if (imageIndex === index) return value;
+//   });
+//   document.querySelector('.lightbox__image').src = elem.original;
+// };
+
+
+
+
+// function slidePicturesToRight() {
+//   let newArr = galleryItems.map(item => item)
+//   let currentUrl = event.target.href;
+//   //let currentUrl = event.srcElement.href;
+//   console.log(event)
+//   console.log(event.srcElement.href);
+//   console.log(currentUrl);
 
 
   
-  for (let i = 0; i < newArr.length; i++){
-    if (newArr[i].original === currentUrl) {
-      addBigSizeSorce(newArr[i + 1].original, newArr[i + 1].description);
-      currentUrl = newArr[i + 1].original;
-      console.log(currentUrl);
-      console.log(event.srcElement.href);
-      return currentUrl;
+//   for (let i = 0; i < newArr.length; i++){
+//     if (newArr[i].original === currentUrl) {
+//       addBigSizeSorce(newArr[i + 1].original, newArr[i + 1].description);
+//       currentUrl = newArr[i + 1].original;
+//       console.log(currentUrl);
+//       console.log(event.srcElement.href);
+//       return currentUrl;
+//     }
+//   }   
+// }
+
+
+function slidePicturesToRight() {
+  const src = document.querySelector('.lightbox__image').src;
+  let newArr = galleryItems.map(item => item)
+ 
+  for (let i = 0; i < newArr.length -1; i++){
+    if (newArr[i].original === src) {
+      console.log(i)
+    
+      return addBigSizeSorce(newArr[i + 1].original, newArr[i + 1].description);
+
     }
   }   
 }
 
-function slidePicturesToLeft(){}
+function slidePicturesToLeft() {
+  const src = document.querySelector('.lightbox__image').src;
+  let newArr = galleryItems.map(item => item)
+
+  for (let i = 0; i < newArr.length - 1; i++) {
+    if (newArr[i].original === src) {
+      console.log(i)
+
+      return addBigSizeSorce(newArr[i - 1].original, newArr[i - 1].description);
+
+    }
+  }
+ }
+
+
+// const findImageIndex = () => {
+//   const src = document.querySelector('.lightbox__image').src;
+
+//   return images.findIndex(image => image.original === src);
+// };
+
+// const showNext = () => {
+//   let imageIndex = findImageIndex();
+//   let nextImageIndex = imageIndex + 1;
+//   nextImageIndex >= maxLength ? (imageIndex = 0) : imageIndex++;
+//   changeImg(imageIndex);
+// };
+// const changeImg = imageIndex => {
+//   const elem = images.find(function (value, index) {
+//     if (imageIndex === index) return value;
+//   });
+//   document.querySelector('.lightbox__image').src = elem.original;
+// };
 
 function closeEscModal(event) {
    //console.log(event);
