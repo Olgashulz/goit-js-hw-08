@@ -81,15 +81,17 @@ refs.galleryContainer.addEventListener('click', openModal);
 refs.closeBtn.addEventListener('click', closeModal);
 refs.backdrop.addEventListener('click', closeBackdrop);
 
+// let altOnCurrentPicture = "";
+
 function closeBackdrop(event) {
 
   if (event.target === event.currentTarget) {
     closeModal(event);
-    console.log("backdropOverlay")
+    // console.log("backdropOverlay")
   }
 
-  console.log(event.target);
-  console.log(event.currentTarget)
+  // console.log(event.target);
+  // console.log(event.currentTarget)
 }
 
 function openModal(event) {
@@ -97,24 +99,66 @@ function openModal(event) {
     return;
   }
 
-  window.addEventListener('keydown', closeEscModal);
-  window.addEventListener('keypress', slidePictures);
-
   // console.log(event.target);
-  // console.log(event.target.dataset.alt);
+  // console.log(event.srcElement.alt);
 
   event.preventDefault();
   addClassListIsOpen();
+
+  const bigSizePicture = event.target.dataset.source;
+  const altOnCurrentPicture = event.srcElement.alt;
   
-  addBigSizeSorce(event.target.dataset.source, event.target.dataset.alt );
+  addBigSizeSorce(bigSizePicture, altOnCurrentPicture);
+  
+  window.addEventListener('keydown', closeEscModal);
+  window.addEventListener('keydown', slidePictures);
+  // console.log(altOnCurrentPicture);
+  // return altOnCurrentPicture;
+
 }
 
-function slidePictures(event) {
-  console.log(event);
+
+function slidePictures() {
+  // console.log(event);
+  // console.log(event.code);
+  const ARROW_RIGHT = 'ArrowRight';
+  const ARROW_LEFT = 'ArrowLeft';
+
+  if (event.code === ARROW_RIGHT) {
+    console.log("в право");
+    return slidePicturesToRight()
+  }
+
+  console.log("лево")
+  return slidePicturesToLeft(altOnCurrentPicture)
 }
+
+
+function slidePicturesToRight() {
+  let newArr = galleryItems.map(item => item)
+  let currentUrl = event.target.href;
+  //let currentUrl = event.srcElement.href;
+  console.log(event)
+  console.log(event.srcElement.href);
+  console.log(currentUrl);
+
+
+  
+  for (let i = 0; i < newArr.length; i++){
+    if (newArr[i].original === currentUrl) {
+      addBigSizeSorce(newArr[i + 1].original, newArr[i + 1].description);
+      currentUrl = newArr[i + 1].original;
+      console.log(currentUrl);
+      console.log(event.srcElement.href);
+      return currentUrl;
+    }
+  }   
+}
+
+function slidePicturesToLeft(){}
 
 function closeEscModal(event) {
-   console.log(event);
+   //console.log(event);
   const ESC_KEY_CODE = 'Escape';
   if (event.code === ESC_KEY_CODE) {
     closeModal();
