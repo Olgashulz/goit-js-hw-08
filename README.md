@@ -1,6 +1,6 @@
 # goit-js-hw-08
 https://olgashulz.github.io/goit-js-hw-08/
-Читать на других языках: Русский, Українська.
+
 
 Критерии приема
 Создан репозиторий goit-js-hw-08-gallery.
