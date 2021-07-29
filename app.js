@@ -175,6 +175,14 @@ function slidePicturesToLeft() {
   }
  }
 
+console.log(localStorage);
+localStorage.setItem('my-data', "njhkhjkhj");
+localStorage.setItem('keyB', JSON.stringify({name:'Mango', age:2 }))
+console.log(localStorage);
+const saveKayB = localStorage.getItem('keyB');
+console.log(saveKayB);
+const parsedKey = JSON.parse(saveKayB);
+console.log(parsedKey);
 
 
 
